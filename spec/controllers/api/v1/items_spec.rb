@@ -3,8 +3,8 @@ require "spec_helper"
 
 RSpec.describe Api::V1::ItemsController, type: :controller do
   it "returns all of the items in the proper format" do
-    item1 = Item.create(name: "item1", description: "it does stuff")
-    item2 = Item.create(name: "item2", description: "it does more stuff")
+    item1 = Item.create(name: "item1", description: "it does stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
+    item2 = Item.create(name: "item2", description: "it does more stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
 
     get :index, format: :json
 
@@ -19,8 +19,8 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   end
 
   it "returns the specified item in the proper format" do
-    item1 = Item.create(name: "item1", description: "it does stuff")
-    item2 = Item.create(name: "item2", description: "it does more stuff")
+    item1 = Item.create(name: "item1", description: "it does stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
+    item2 = Item.create(name: "item2", description: "it does more stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
 
     get :show, id: item1.id, format: :json
 
@@ -31,10 +31,17 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   end
 
   it "deletes the specified item" do
-    item1 = Item.create(name: "item1", description: "it does stuff")
-    item2 = Item.create(name: "item2", description: "it does more stuff")
+    item1 = Item.create(name: "item1", description: "it does stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
+    item2 = Item.create(name: "item2", description: "it does more stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
 
-    delete :
+    delete :destroy, id: item1.id
+
+    count = Item.all.count
+    item = Item.first
+
+    expect(response.status).to eq(204)
+    expect(count).to eq (1)
+    expect(item.name).to eq("item2")
   end
 
 end

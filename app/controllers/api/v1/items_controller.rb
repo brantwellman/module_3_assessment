@@ -12,11 +12,20 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-
+    item = Item.create(item_params)
   end
 
   def destroy
-    respond_with Item.delete
+    item = Item.find(params[:id])
+    item.delete
+    # respond_with .delete
   end
+
+
+  private
+
+    def item_params
+      params.require(:item).permit(:name, :description, :image_url)
+    end
 
 end
