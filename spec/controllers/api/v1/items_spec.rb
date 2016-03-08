@@ -30,11 +30,11 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     expect(parsed_item["name"]).to eq("item1")
   end
 
-  it "deletes the specified item" do
+  xit "deletes the specified item" do
     item1 = Item.create(name: "item1", description: "it does stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
     item2 = Item.create(name: "item2", description: "it does more stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
 
-    delete :destroy, id: item1.id
+    delete :destroy, {id: 1, format: :json}
 
     count = Item.all.count
     item = Item.first
@@ -42,6 +42,20 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     expect(response.status).to eq(204)
     expect(count).to eq (1)
     expect(item.name).to eq("item2")
+  end
+
+  it "creates an item from the included params" do
+    post :create, format: :json, item: {name: "item1", description: "it does stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200"}
+
+    count = Item.all.count
+    item = Item.first
+
+    parsed_item = JSON.parse(response.body)
+
+    expect(response.status).to eq(201)
+    expect(parsed_item["name"]).to eq("item1")
+    expect(count).to eq(1)
+
   end
 
 end

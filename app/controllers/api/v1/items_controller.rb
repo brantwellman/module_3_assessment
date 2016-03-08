@@ -6,7 +6,7 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.all
   end
 
-  # need to remove created at and updated_at
+  # need to remove created at and updated_at - AR Serializers
   def show
     respond_with Item.find(params[:id])
   end
@@ -17,8 +17,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.delete
-    # respond_with .delete
+    item.destroy
   end
 
 
