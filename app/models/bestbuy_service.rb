@@ -7,9 +7,10 @@ class BestbuyService
   end
 
   def products
-    data = parse(connection.get("/v1/products(search=#{search_data})?format=json&show=sku,name,customerReviewAverage,shortDescription,salePrice,image&apiKey=#{ENV['BEST_BUY_KEY']}"))
-    binding.pry
+    data = parse(connection.get("/v1/products(search=#{search_params})?format=json&show=sku,name,customerReviewAverage,shortDescription,salePrice,image&apiKey=#{ENV['BEST_BUY_KEY']}"))
+    products = data["products"]
   end
+
 
   private
 

@@ -8,11 +8,12 @@ class ItemsController < ApplicationController
   end
 
   def new_item_search
-    service = BestbuyService.new(params["Search info:"])
+
     redirect_to search_path
   end
 
   def search
-
+    service = BestbuyService.new(params["Search info:"])
+    @product_data = service.products
   end
 end
