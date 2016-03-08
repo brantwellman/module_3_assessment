@@ -5,7 +5,8 @@ RSpec.feature "user searches for item" do
   it "sees 15 results from a sennheiser search" do
     visit "/"
 
-    fill_in "Search", with: "sennheiser"
+    fill_in "Search info:", with: "sennheiser"
+    click_on "Search"
 
     expect(current_path).to eq("/search")
     expect(page).to have_content("")

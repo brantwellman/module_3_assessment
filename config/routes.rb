@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items,  only: [:index, :show]
+  post '/new_item_search', to: 'items#new_item_search'
   resources :orders, only: [:index, :show]
   resources :users,  only: [:index, :show]
   namespace :api , defaults: {format: :json} do

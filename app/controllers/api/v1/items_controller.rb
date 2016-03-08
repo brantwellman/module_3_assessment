@@ -22,7 +22,6 @@ class Api::V1::ItemsController < ApplicationController
     item.destroy
   end
 
-
   private
 
     def item_params
