@@ -11,7 +11,6 @@ class BestbuyService
     products = data["products"]
   end
 
-
   private
 
     def parse(response)

@@ -7,7 +7,6 @@
     <li>Average cutomer review: <%= product["customerReviewAverage"] %></li>
     <li>Description: <%= product["shortDescription"] %> </li>
     <li>Price: <%= product["salePrice"] %></li>
-    <li><%= product["image"] %></li>
+    <li><%= image_tag(product["image"]) %></li>
   </ul>
-
 <% end %>
