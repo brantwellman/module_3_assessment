@@ -9,12 +9,11 @@ RSpec.feature "user searches for item" do
     click_on "Search"
 
     expect(current_path).to eq("/search")
-    expect(page).to have_content("")
-    expect(page).to have_content("sku")
-    expect(page).to have_content("name")
-    expect(page).to have_content("customer average review")
-    expect(page).to have_content("short description")
-    expect(page).to have_content("sale price")
+    expect(page).to have_content("sku: 4763330")
+    expect(page).to have_content("Name: Galaxy Audio - Headset Microphone - Beige")
+    expect(page).to have_content("Average cutomer review: 2.7")
+    expect(page).to have_content("Description: From our expanded online assortment; TalkThrough function; NoiseGard Digital noise cancellation; 10mm drivers")
+    expect(page).to have_content("Price: 229.99")
     expect(page).to have_content("image")
   end
 end

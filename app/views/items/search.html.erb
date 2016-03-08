@@ -1,1 +1,13 @@
 <h1>Here are the items you are looking for</h1>
+
+<% @product_data.each do |product| %>
+  <ul>
+    <li>Name: <%= product["name"] %> </li>
+    <li>sku: <%= product["sku"] %> </li>
+    <li>Average cutomer review: <%= product["customerReviewAverage"] %></li>
+    <li>Description: <%= product["shortDescription"] %> </li>
+    <li>Price: <%= product["salePrice"] %></li>
+    <li><%= product["image"] %></li>
+  </ul>
+
+<% end %>
