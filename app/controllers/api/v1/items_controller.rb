@@ -13,8 +13,10 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     item = Item.create(item_params)
+    respond_with item
   end
 
+# test not passing
   def destroy
     item = Item.find(params[:id])
     item.destroy

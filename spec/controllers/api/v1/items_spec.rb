@@ -30,6 +30,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     expect(parsed_item["name"]).to eq("item1")
   end
 
+# Need to get proper syntax for rspec call
   xit "deletes the specified item" do
     item1 = Item.create(name: "item1", description: "it does stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
     item2 = Item.create(name: "item2", description: "it does more stuff", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
@@ -55,7 +56,6 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     expect(response.status).to eq(201)
     expect(parsed_item["name"]).to eq("item1")
     expect(count).to eq(1)
-
   end
 
 end
